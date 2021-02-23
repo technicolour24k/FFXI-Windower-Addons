@@ -1,2 +1,4 @@
-# FFXI-Windower-Addons
-Place where I toss random FFXI addon ideas - most are probably a WIP, don't get too excited.
+# Item Dropper
+
+A less than stellar item drop tool - monitors inventory for item codes and tosses.
+Only triggers on load, and when an item enters your inventory.
