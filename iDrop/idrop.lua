@@ -24,53 +24,31 @@
 --(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 --SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-_addon.name = 'Testing'
+_addon.name = 'iDrop'
 _addon.version = '1.0'
 _addon.author = 'Kin [Nocturnal Souls]'
-_addon.commands = {'test',}
-
+_addon.commands = {'idrop',}
 
 items = {4545,1179, 4538}
 
-
-
 function main()
 	bag = 0
-    print("Loaded...")
     local invTable = windower.ffxi.get_bag_info(bag)
     local invItemCount = windower.ffxi.get_items(bag)
-    -- tossList = {}
-    -- local file = io.open(windower.addon_path.. "tossList.txt")
-    -- local i = 0
-    -- if file then
-    --     for line in file:lines() do
-    --     i = i + 1
-    --     tossList[i] = line
-    --     end
-    --     file:close()
-    -- else
-    --     error('file not found')
-    -- end
-
     n = 0
     while (n < invTable.max) do
         local itemInfo = windower.ffxi.get_items(0, n)
         local itemCount = itemInfo.count
         count = 1
         while (count <= table.getn(items)) do
-
-            -- print("Count: " ..count)
-            -- print("items[count]: " ..items[count])
             if (itemInfo.id == items[count]) then
                 print("Found " ..itemInfo.id.." at " ..itemInfo.slot)
                 windower.ffxi.drop_item(itemInfo.slot, 1)
-                -- break
             end
             count = count+1
         end
         n = n+1
     end
 end
-
 windower.register_event('load', main)
 windower.register_event('add item', 0, main)
