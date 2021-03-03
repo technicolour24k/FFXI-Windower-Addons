@@ -29,20 +29,20 @@ _addon.version = '1.0'
 _addon.author = 'Kin [Nocturnal Souls]'
 _addon.commands = {'idrop',}
 
-items = {4545,1179, 4538}
+require('tossList')
 
 function main()
 	bag = 0
     local invTable = windower.ffxi.get_bag_info(bag)
     local invItemCount = windower.ffxi.get_items(bag)
     n = 0
-    while (n < invTable.max) do
+    while (n < (invTable.max +1)) do
         local itemInfo = windower.ffxi.get_items(0, n)
         local itemCount = itemInfo.count
         count = 1
         while (count <= table.getn(items)) do
             if (itemInfo.id == items[count]) then
-                print("Found " ..itemInfo.id.." at " ..itemInfo.slot)
+                -- print("Found " ..itemInfo.id.." at " ..itemInfo.slot)
                 windower.ffxi.drop_item(itemInfo.slot, 1)
             end
             count = count+1
