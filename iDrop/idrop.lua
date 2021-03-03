@@ -32,7 +32,7 @@ _addon.commands = {'idrop',}
 require('tossList')
 
 function main()
-	bag = 0
+    bag = 0
     local invTable = windower.ffxi.get_bag_info(bag)
     local invItemCount = windower.ffxi.get_items(bag)
     n = 0
@@ -42,7 +42,6 @@ function main()
         count = 1
         while (count <= table.getn(items)) do
             if (itemInfo.id == items[count]) then
-                -- print("Found " ..itemInfo.id.." at " ..itemInfo.slot)
                 windower.ffxi.drop_item(itemInfo.slot, 1)
             end
             count = count+1
